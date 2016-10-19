@@ -41,6 +41,8 @@ song * insert_order(song *a, char n[], char b[]){
     }
     copy->next = x;
     x->next = a;
+    printf("\n%s - %s - %s\n",copy->name,x->name,a->name);
+    printf("\n%s\n",original->name);
     return original;
 }
 
