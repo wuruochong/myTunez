@@ -20,7 +20,7 @@ song * find_song2(song *a, char b[]);
 
 song * rand_song(song *a);
 
-void remove_song(song *a, char n[]);
+song * remove_song(song *a, char n[]);
 
 song * free_list(song *a);
 // #endif

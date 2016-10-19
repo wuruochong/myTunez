@@ -11,9 +11,7 @@ typedef struct song_node{
 song * insert_front(song *a, char n[], char b[]){
     song * x;
     x = (song *)malloc(sizeof(song));
-    // x->name = n;
     strcpy(x->name,n);
-    // x->artist = b;
     strcpy(x->artist, b);
     x->next = a;
     return x;
@@ -23,14 +21,15 @@ song * insert_order(song *a, char n[], char b[]){
     song *x,*copy,*original;
     original = a;
     x = (song *)malloc(sizeof(song));
-    // x->name = n;
     strcpy(x->name, n);
-    // x->artist = b;
     strcpy(x->artist, b);
-    if((strcmp(n,a->name)<0) && (strcmp(b,a->artist)<0)){
+    //if the song belongs in the front
+    if((strcmp(n,a->name)<=0) && (strcmp(b,a->artist)<=0)){
         return insert_front(a,n,b);
     }
-    while((strcmp(n,a->name)>0) && (strcmp(b,a->artist)>0)){
+    //transverse a until find right spot
+    while((strcmp(n,a->name)>=0) && (strcmp(b,a->artist)>=0)){
+        //special case for when song belongs at the end
         if (a->next == 0){
             a->next = x;
             x->next = 0;
@@ -39,10 +38,11 @@ song * insert_order(song *a, char n[], char b[]){
         copy = a;
         a = a->next;
     }
+    //puts the song between copy and next
     copy->next = x;
     x->next = a;
-    printf("\n%s - %s - %s\n",copy->name,x->name,a->name);
-    printf("\n%s\n",original->name);
+    //printf("\n%s - %s - %s\n",copy->name,x->name,a->name);
+    //printf("\n%s\n",original->name);
     return original;
 }
 
@@ -59,50 +59,64 @@ song * find_song(song *a, char n[]){
     while ((a->next != 0) && (strcmp(a->name,n) != 0)){
         a = a->next;
     }
-    if (a->next = 0){
-        printf("Not found...\n");
-        return 0;
+    if (strcmp(a->name,n) == 0){
+        printf("Found!\n");
+        return a;
     }
-    printf("Found!\n");
-    return a;
+    printf("Not found...\n");
+    return 0;
 }
 
 song * find_song2(song *a, char b[]){
-    printf("Looking for %s\n",b);
+    printf("Looking for songs by %s\n",b);
     while ((a->next != 0) && (strcmp(a->artist,b) != 0)){
         a = a->next;
     }
-    if (a->next = 0){
-        printf("Not found...\n");
-        return 0;
+    if (strcmp(a->artist,b) == 0){
+        printf("Found!\n");
+        return a;
     }
-    printf("Found!\n");
-    return a;
+    printf("Not found...\n");
+    return 0;
 }
 
-/*song * rand_song(song *a){
-}*/
+//song * rand_song(song *a){}
 
 song * remove_song(song *a, char n[]){
-    song *copy;
-    // while((strcmp(n,a->name)!= 0) && (strcmp(b,a->artist)!= 0)){
+    song *copy,*original;
+    original = a;
+    //search for song name in list
     while(strcmp(n,a->name)!= 0){
+        //song not found
         if (a->next == 0){
             printf("%s does not exist...\n",n);
-            return 0;
+            return original;
         }
         copy = a;
         a = a->next;
     }
-    copy->next = a->next;
+    //song is first element
+    if(a == original){
+        original = a->next;
+    }
+    //song is last element
+    else if(a->next == 0){
+        copy->next = 0;
+    }
+    //song is not last element
+    else{
+        copy->next = a->next;
+    }
+    //removing song
     free(a);
-    return a;
+    return original;
 }
 
 song * free_list(song *a){
     song *copy,*original = a;
     while(a){
         copy = a->next;
+        printf("Freeing %s\n",a->name);
         free(a);
         a = copy;
     }
