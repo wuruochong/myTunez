@@ -27,7 +27,7 @@ song * insert_order(song *a, char n[], char b[]){
     strcpy(x->name, n);
     // x->artist = b;
     strcpy(x->artist, b);
-    if((strcmp(n,a->name)>0) && (strcmp(b,a->artist)>0)){
+    if((strcmp(n,a->name)<0) && (strcmp(b,a->artist)<0)){
         return insert_front(a,n,b);
     }
     while((strcmp(n,a->name)>0) && (strcmp(b,a->artist)>0)){

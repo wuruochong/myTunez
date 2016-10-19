@@ -12,7 +12,7 @@ int main(){
     printf("Adding Warriors - Imagine Dragons...\n");
     a = insert_order(a,"Warriors","Imagine Dragons");
     printf("Adding King and Lionheart - Of Men and Monsters...\n");
-    a = insert_order(a, "King and Lionheart", "Of Men and Monsters");
+    a = insert_order(a, "Aing and Lionheart", "Af Men and Monsters");
     print_list(a);
     return 0;
 }
