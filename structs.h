@@ -1,8 +1,12 @@
+
+// #ifndef STRUCTS_H
+// #define STRUCTS_H
+
 typedef struct song_node{
   char name[256];
   char artist[256];
   struct song_node *next;
-} song;
+} song; 
 
 song * insert_front(song *a, char n[], char b[]);
 
@@ -19,3 +23,4 @@ song * rand_song(song *a);
 void remove_song(song *a, char n[]);
 
 song * free_list(song *a);
+// #endif
