@@ -13,6 +13,7 @@ song * add_song(char n[], char b[]){
   // printf("%s",table[3]->name);
   // return table[3];
   if (!table[i]){
+    print("yay");
     song *x;
     x = (song*)malloc(sizeof(song));
     table[i]=x;
