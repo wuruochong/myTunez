@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 typedef struct song_node{
   char name[256];
@@ -80,7 +81,26 @@ song * find_song2(song *a, char b[]){
     return 0;
 }
 
-//song * rand_song(song *a){}
+int list_len(song *a){
+  int c = 0;
+  while (a){
+    c++;
+    a= a->next;
+  }
+  return c;
+}
+
+song * rand_song(song *a){
+  srand(time(0));
+  int r = rand();
+  int t = r%list_len(a);
+  while (t){
+    a= a->next;
+    t--;
+  }
+  return a;
+}
+
 
 song * remove_song(song *a, char n[]){
     song *copy,*original;
