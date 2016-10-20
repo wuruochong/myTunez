@@ -15,6 +15,6 @@ void print_all();
 
 void shuffle(int n);
 
-void del_song(char a[], char b[]);
+song * del_song(char a[], char b[]);
 
 void del_all();

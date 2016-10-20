@@ -4,8 +4,10 @@
 #include "structs.h"
 
 int main(){
-  add_song
-
+  add_song("sins of the father", "donna burke");
+  // printf("%s",table[3]->name);
+  print_ent('d');
+  print_all();
   return 0;
 }
 

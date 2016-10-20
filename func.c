@@ -2,10 +2,24 @@
 #include <stdio.h>
 #include <string.h>
 #include "structs.h"
+#include <time.h>
+
+song *table[26];
 
 song * add_song(char n[], char b[]){
   int i = b[0]-97;
-  return insert_order(table[i],n, b);
+  //int i = 4;
+  // printf("%d",i);
+  // printf("%s",table[3]->name);
+  // return table[3];
+  if (!table[i]){
+    song *x;
+    x = (song*)malloc(sizeof(song));
+    table[i]=x;
+    return x;
+  }
+  return insert_order(table[i],n,b);
+  // return 0;
 }
 
 song * search_song(char n[]){
@@ -39,10 +53,35 @@ void print_art(char b[]){
   }
 }
 
-void print_all{
+void print_all(){
   int c =0;
   while (c!=26){
     print_ent (c);
     c++;
   }
 }
+
+void shuffle(int n){
+  srand(time(0));
+  while (n){
+    printf("%s-%s", rand_song(table[rand()])->artist,rand_song(table[rand()])->name);
+    n--;
+  }
+}
+
+song * del_song(char a[], char b[]){
+  return remove_song(table[b[0]],a);
+}
+
+void del_all(){
+  int c = 26;
+  while (c){
+    while (table[c]){
+      remove_song(table[c],table[c]->name);
+    }
+    free_list(table[c]);
+    c--;
+  }
+}
+
+// westwing

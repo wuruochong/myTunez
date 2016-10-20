@@ -25,6 +25,9 @@ song * insert_order(song *a, char n[], char b[]){
     strcpy(x->name, n);
     strcpy(x->artist, b);
     //if the song belongs in the front
+    if(!a){
+      return insert_front(a,n,b);
+    }
     if((strcmp(n,a->name)<=0) && (strcmp(b,a->artist)<=0)){
         return insert_front(a,n,b);
     }
