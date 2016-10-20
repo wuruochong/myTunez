@@ -5,7 +5,7 @@ song * add_song(char n[], char b[]);
 
 song * search_song(char n[]);
 
-song * search_song(char b[]);
+song * search_song2(char b[]);
 
 void print_ent(char a);
 

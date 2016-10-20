@@ -3,10 +3,14 @@
 #include "func.h"
 #include "structs.h"
 
-
-
-
 int main(){
+  add_song
+
+  return 0;
+}
+
+
+/*int main(){
     printf("Adding a - aa...\n");
     song * a = insert_front(0,"aa","a");
     printf("Adding b - cc...\n");
@@ -55,3 +59,4 @@ int main(){
 
     return 0;
 }
+*/
