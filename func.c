@@ -12,6 +12,7 @@ song * add_song(char n[], char b[]){
   // printf("%d",i);
   // printf("%s",table[3]->name);
   // return table[3];
+  // printf("%d\n",table[i]);
   if (!table[i]){
     // printf("%d",i);
     // printf("yay");

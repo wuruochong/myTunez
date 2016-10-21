@@ -6,8 +6,10 @@
 int main(){
   add_song("sins of the father", "donna burke");
   // printf("%s",table[3]->name);
+  // add_song("the man who sold the world", "david bowie");
+  // add_song("blackstar","david bowie");
   print_ent('d');
-  // print_all();
+  print_all();
   return 0;
 }
 
