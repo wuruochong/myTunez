@@ -1,3 +1,5 @@
+#ifndef FUNC_H
+#define FUNC_H
 #include "structs.h"
 song *table[26];
 
@@ -18,3 +20,5 @@ void shuffle(int n);
 song * del_song(char a[], char b[]);
 
 void del_all();
+
+#endif

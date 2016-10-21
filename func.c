@@ -1,30 +1,16 @@
+#ifndef FUNC_C
+#define FUNC_C
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "structs.h"
+#include "func.h"
 #include <time.h>
-
-song *table[26];
 
 song * add_song(char n[], char b[]){
   int i = b[0]-97;
-  //int i = 4;
-  // printf("%d",i);
-  // printf("%s",table[3]->name);
-  // return table[3];
-  // printf("%d\n",table[i]);
-  if (!table[i]){
-    // printf("%d",i);
-    // printf("yay");
-    song *x;
-    x = (song*)malloc(sizeof(song));
-    strcpy(x->name,n);
-    strcpy(x->artist,b);
-    table[i]=x;
-    return x;
-  }
-  return insert_order(table[i],n,b);
-  // return 0;
+  table[i] = insert_order(table[i],n,b);
+  return table[i];
 }
 
 song * search_song(char n[]){
@@ -45,6 +31,7 @@ song * search_song2(char b[]){
 }
 
 void print_ent(char a){
+  printf("print_ent here!\n");
   int i = a - 97;
   print_list(table[i]);
 }
@@ -90,3 +77,6 @@ void del_all(){
 }
 
 // westwing
+// gniwtsew
+
+#endif

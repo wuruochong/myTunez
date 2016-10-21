@@ -3,28 +3,25 @@
 #include "func.h"
 #include "structs.h"
 
-int main(){
+/*int main(){
   add_song("sins of the father", "donna burke");
-  // printf("%s",table[3]->name);
-  // add_song("the man who sold the world", "david bowie");
-  // add_song("blackstar","david bowie");
   print_ent('d');
   print_all();
   return 0;
-}
+}*/
 
 
-/*int main(){
+int main(){
     printf("Adding a - aa...\n");
     song * a = insert_front(0,"aa","a");
     printf("Adding b - cc...\n");
     a = insert_order(a, "cc", "b");
     printf("Adding b - ac...\n");
     a = insert_order(a,"ac","b");
-    printf("Adding a - bb...\n");
-    a = insert_order(a, "bb", "a");
-    printf("Adding a - ab...\n");
-    a = insert_order(a, "ab", "a");
+    printf("Adding b - bb...\n");
+    a = insert_order(a, "bb", "b");
+    printf("Adding a - zz...\n");
+    a = insert_order(a, "zz", "a");
     print_list(a);
     printf("length: %d\n", list_len(a));
     printf("\n");
@@ -63,4 +60,3 @@ int main(){
 
     return 0;
 }
-*/

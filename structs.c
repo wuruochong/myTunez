@@ -1,3 +1,5 @@
+#ifndef STRUCTS_C
+#define STRUCTS_C
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,19 +30,23 @@ song * insert_order(song *a, char n[], char b[]){
     if(!a){
       return insert_front(a,n,b);
     }
-    if((strcmp(n,a->name)<=0) && (strcmp(b,a->artist)<=0)){
+    if(strcmp(b,a->artist)<0){
         return insert_front(a,n,b);
     }
     //transverse a until find right spot
-    while((strcmp(n,a->name)>=0) && (strcmp(b,a->artist)>=0)){
-        //special case for when song belongs at the end
-        if (a->next == 0){
-            a->next = x;
-            x->next = 0;
-            return original;
-        }
+    while(a && (strcmp(b,a->artist)>0)){
         copy = a;
-        a = a->next;
+        a=a->next;
+    }
+    while (a && (strcmp(b,a->artist)==0) && (strcmp(n,a->name)>=0)){
+        copy = a;
+        a=a->next;
+    }
+    //special case for when song belongs at the end
+    if (!a){
+        copy->next = x;
+        x->next = 0;
+        return original;
     }
     //puts the song between copy and next
     copy->next = x;
@@ -145,3 +151,5 @@ song * free_list(song *a){
     }
     return original;
 }
+
+#endif
