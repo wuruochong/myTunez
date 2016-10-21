@@ -15,13 +15,17 @@ song * add_song(char n[], char b[]){
 
 song * search_song(char n[]){
   song * res;
-  int c = 26;
-  while (c){
+  int c = 25;
+  while (c!=-1){
     res = find_song(table[c],n);
+
     if (res){
+      printf("Found!\n");
       return res;
     }
+    c--;
   }
+  printf("Not found\n");
   return 0;
 }
 
@@ -31,7 +35,7 @@ song * search_song2(char b[]){
 }
 
 void print_ent(char a){
-  printf("print_ent here!\n");
+  // printf("print_ent here!\n");
   int i = a - 97;
   print_list(table[i]);
 }
@@ -39,34 +43,52 @@ void print_ent(char a){
 void print_art(char b[]){
   song * t = search_song2(b);
   printf("all songs of %s:\n",b);
+  if (!t){
+    printf("No songs\n");
+    return;
+  }
   while (strcmp(t->artist, b)==0){
-    printf("%s-%s",t->artist,t->name);
+    printf("%s-%s\n",t->artist,t->name);
     t = t->next;
   }
 }
 
 void print_all(){
-  int c =0;
-  while (c!=26){
+  int c =97;
+  while (c!=123){
     print_ent (c);
     c++;
   }
 }
 
-void shuffle(int n){
-  srand(time(0));
-  while (n){
-    printf("%s-%s", rand_song(table[rand()])->artist,rand_song(table[rand()])->name);
+
+
+void shuffle(int n) {
+  song *big = 0;
+  int i = 97;
+  while (i < 123) {
+    song *list = table[i-97];
+    while(list) {
+      big = insert_front(big,list->name,list->artist);
+      list = list->next;
+    }
+    i++;
+  }
+
+  while (n) {
+    song *rand = rand_song(big);
+    printf("%s - %s\n", rand->artist, rand->name);
     n--;
   }
+  printf("\n");
 }
 
 song * del_song(char a[], char b[]){
-  return remove_song(table[b[0]],a);
+  return remove_song(table[b[0]-'a'],a);
 }
 
 void del_all(){
-  int c = 26;
+  int c = 25;
   while (c){
     while (table[c]){
       remove_song(table[c],table[c]->name);

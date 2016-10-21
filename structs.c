@@ -33,6 +33,9 @@ song * insert_order(song *a, char n[], char b[]){
     if(strcmp(b,a->artist)<0){
         return insert_front(a,n,b);
     }
+    if(strcmp(b,a->artist)==0&&(strcmp(n,a->name)<0)){
+        return insert_front(a,n,b);
+    }
     //transverse a until find right spot
     while(a && (strcmp(b,a->artist)>0)){
         copy = a;
@@ -57,7 +60,7 @@ song * insert_order(song *a, char n[], char b[]){
 }
 
 void print_list(song *a){
-    printf("Printing list...\n");
+    // printf("Printing list...\n");
     while(a){
         printf("%s-%s\n",a->artist,a->name);
         a = a->next;
@@ -65,20 +68,30 @@ void print_list(song *a){
 }
 
 song * find_song(song *a, char n[]){
-    printf("Looking for %s\n",n);
+    // printf("Looking for %s\n",n);
+    if(!a){
+      // printf("Not found...\n");
+      return 0;
+    }
     while ((a->next != 0) && (strcmp(a->name,n) != 0)){
         a = a->next;
     }
+
     if (strcmp(a->name,n) == 0){
-        printf("Found!\n");
+        // printf("Found!\n");
         return a;
     }
-    printf("Not found...\n");
+    // printf("Not found...\n");
     return 0;
 }
 
 song * find_song2(song *a, char b[]){
     printf("Looking for songs by %s\n",b);
+
+    if (!a){
+      printf("Not found...\n");
+      return 0;
+    }
     while ((a->next != 0) && (strcmp(a->artist,b) != 0)){
         a = a->next;
     }
@@ -100,7 +113,11 @@ int list_len(song *a){
 }
 
 song * rand_song(song *a){
+  // printf("hello\n");
   srand(time(0));
+  if (!a){
+    return 0;
+  }
   int r = rand();
   int t = r%list_len(a);
   while (t){

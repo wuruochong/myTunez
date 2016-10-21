@@ -2,15 +2,64 @@
 #include <stdlib.h>
 #include "func.h"
 #include "structs.h"
+#include <time.h>
 
 int main(){
-  add_song("sins of the father", "donna burke");
-  add_song("b", "david");
-  add_song("the man who sold the world","dzvid bowie");
+  printf("Testing add\n");
+  add_song("abc","def");
+  add_song("zxc","def");
+  add_song("aac","def");
+  add_song("aaa","dzf");
+  add_song("lol","ded");
+
+  add_song("asd","bach");
+
+  add_song("ayy","zzz");
+  print_all();
+
+  printf("\nTesting find\n");
+  printf("finding abc\n");
+  // printf("%s",find_song(table[25],"ayy")->name);
+  printf("\n%s\n", search_song("abc")->name);
+  printf("finding xyz\n");
+  search_song("xyz");
+
+  printf("\nTesting find2\n");
+  printf("finding def\n");
+  printf("%s\n", search_song2("def")->artist);
+  printf("finding fed\n");
+  search_song2("fed");
+
+  printf("\nTesting printletter\n");
+  printf("printing d library\n");
   print_ent('d');
-  //print_all();
+  printf("printing y library\n");
+  print_ent('y');
+
+  printf("\nTesting printartist\n");
+  printf("printing def songs\n");
+  print_art("def");
+  printf("printing fed songs\n");
+  print_art("fed");
+
+/*  printf("\nTesting random song...\n");
+  printf("%s\n",rand_song(table[3])->name);
+  printf("\n");
+  */
+
+   printf("\nTesting shuffle\n");
+   shuffle(1);
+
+  printf("\nTesting delete\n");
+  print_all();
+  printf("\ndeleting def-aac\n");
+  del_song("aac","def");
+  print_all();
+
+
   return 0;
 }
+
 
 
 /*int main(){
